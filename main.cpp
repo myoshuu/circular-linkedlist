@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <unistd.h>
 
 struct Mahasiswa
 {
@@ -11,6 +12,15 @@ struct Mahasiswa
 
 Mahasiswa *head = nullptr;
 Mahasiswa *last = nullptr;
+
+void clearScreen()
+{
+#ifdef _WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
+}
 
 void tambahData(int nim, const std::string &nama, const std::string &jurusan)
 {
@@ -108,6 +118,7 @@ void cetakData()
   if (head == nullptr)
   {
     std::cout << "Tidak ada data mahasiswa.\n";
+    sleep(3);
     return;
   }
 
@@ -116,6 +127,7 @@ void cetakData()
   {
     std::cout << "NIM: " << curr->nim << ", Nama: " << curr->nama << ", Jurusan: " << curr->jurusan << std::endl;
     curr = curr->next;
+    sleep(2);
   } while (curr != head);
 }
 
@@ -124,8 +136,9 @@ int main()
   int pilihan, nim;
   std::string nama, jurusan;
 
-  while (true)
+  do
   {
+    clearScreen();
     std::cout << "Menu:\n";
     std::cout << "1. Input/tambah data\n";
     std::cout << "2. Cari data berdasarkan NIM\n";
@@ -139,6 +152,7 @@ int main()
     switch (pilihan)
     {
     case 1:
+      clearScreen();
       std::cout << "Masukkan NIM: ";
       std::cin >> nim;
       std::cout << "Masukkan Nama: ";
@@ -149,18 +163,22 @@ int main()
       tambahData(nim, nama, jurusan);
       break;
     case 2:
+      clearScreen();
       std::cout << "Masukkan NIM yang dicari: ";
       std::cin >> nim;
       if (Mahasiswa *mhs = cariDataByNim(nim))
       {
         std::cout << "Data ditemukan: NIM: " << mhs->nim << ", Nama: " << mhs->nama << ", Jurusan: " << mhs->jurusan << std::endl;
+        sleep(3);
       }
       else
       {
         std::cout << "Data tidak ditemukan.\n";
+        sleep(3);
       }
       break;
     case 3:
+      clearScreen();
       std::cout << "Masukkan NIM yang akan diubah: ";
       std::cin >> nim;
       std::cout << "Masukkan Nama baru: ";
@@ -171,6 +189,7 @@ int main()
       ubahData(nim, nama, jurusan);
       break;
     case 4:
+      clearScreen();
       std::cout << "Masukkan NIM yang akan dihapus: ";
       std::cin >> nim;
       hapusData(nim);
@@ -183,5 +202,5 @@ int main()
     default:
       std::cout << "Pilihan tidak valid.\n";
     }
-  }
+  } while (pilihan != 6);
 }
