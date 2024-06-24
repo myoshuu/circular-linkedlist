@@ -148,10 +148,18 @@ void cetakData()
   PeminjamanRuang *curr = head;
   do
   {
-    std::cout << "PinjamID: " << curr->pinjamID << ", Nama Ruang: " << curr->namaRuang << ", Lokasi: " << curr->lokasi
-              << ", Tanggal Mulai Pinjam: " << curr->tanggalMulaiPinjam << ", Jam Mulai Pinjam: " << curr->jamMulaiPinjam
-              << ", Tanggal Selesai Pinjam: " << curr->tanggalSelesaiPinjam << ", Jam Selesai Pinjam: " << curr->jamSelesaiPinjam
-              << ", Nama Peminjam: " << curr->namaPeminjam << ", Keperluan: " << curr->keperluan << std::endl;
+    std::cout << "PinjamID: " << curr->pinjamID << std::endl
+              << "Nama Ruang: " << curr->namaRuang << std::endl
+              << "Lokasi: " << curr->lokasi
+              << std::endl
+              << "Tanggal Mulai Pinjam: " << curr->tanggalMulaiPinjam << std::endl
+              << "Jam Mulai Pinjam: " << curr->jamMulaiPinjam
+              << std::endl
+              << "Tanggal Selesai Pinjam: " << curr->tanggalSelesaiPinjam << std::endl
+              << "Jam Selesai Pinjam: " << curr->jamSelesaiPinjam
+              << std::endl
+              << "Nama Peminjam: " << curr->namaPeminjam << std::endl
+              << "Keperluan: " << curr->keperluan << std::endl;
     curr = curr->next;
   } while (curr != head);
   std::cout << "Tekan tombol apapun untuk melanjutkan...";
@@ -215,10 +223,18 @@ int main()
       std::cin >> pinjamID;
       if (PeminjamanRuang *pr = cariDataByPinjamID(pinjamID))
       {
-        std::cout << "Data ditemukan: PinjamID: " << pr->pinjamID << ", Nama Ruang: " << pr->namaRuang << ", Lokasi: " << pr->lokasi
-                  << ", Tanggal Mulai Pinjam: " << pr->tanggalMulaiPinjam << ", Jam Mulai Pinjam: " << pr->jamMulaiPinjam
-                  << ", Tanggal Selesai Pinjam: " << pr->tanggalSelesaiPinjam << ", Jam Selesai Pinjam: " << pr->jamSelesaiPinjam
-                  << ", Nama Peminjam: " << pr->namaPeminjam << ", Keperluan: " << pr->keperluan << std::endl;
+        std::cout << "PinjamID: " << pr->pinjamID << std::endl
+                  << "Nama Ruang: " << pr->namaRuang << std::endl
+                  << "Lokasi: " << pr->lokasi
+                  << std::endl
+                  << "Tanggal Mulai Pinjam: " << pr->tanggalMulaiPinjam << std::endl
+                  << "Jam Mulai Pinjam: " << pr->jamMulaiPinjam
+                  << std::endl
+                  << "Tanggal Selesai Pinjam: " << pr->tanggalSelesaiPinjam << std::endl
+                  << "Jam Selesai Pinjam: " << pr->jamSelesaiPinjam
+                  << std::endl
+                  << "Nama Peminjam: " << pr->namaPeminjam << std::endl
+                  << "Keperluan: " << pr->keperluan << std::endl;
       }
       else
       {
